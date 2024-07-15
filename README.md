@@ -4,7 +4,7 @@
 [ตามนี้เลย](https://unity.com/how-to/naming-and-code-style-tips-c-scripting-unity)
 
 - พวกชื่อ Namespace, Class, Struct, Property, Function, Enum เป็นแบบ `PascalCase` หมด
-- Serialzable Field เป็นแบบ `camelCase` เพราะใน Unity เวลาเราจะทำให้ตัวแปรมัน Serialize ได้ ต้องทำเป็น public field (ไม่ก็ใช้ [SerializeField] attribute) ทำแบบนี้เพื่อให้ชื่อตัวแปรมันไม่ซ้ำกับพวก Property 
+- Serialzable Field เป็นแบบ `camelCase` เพราะใน Unity เวลาเราจะทำให้ตัวแปรมัน Serialize ได้ ต้องทำเป็น public field (ไม่ก็ใช้ [SerializeField] attribute) ทำแบบนี้เพื่อให้ชื่อตัวแปรมันไม่ซ้ำกับพวก Property
 - พวก Local Variable/Parameter เป็นแบบ `camelCase` หมด
 - พวก Private/Protected Field ให้มี Prefix เป็น `_` ตามด้วยชื่อเป็นแบบ `camelCase` เช่น `_currentHp` 
 - พวกชื่อตัวแปร Boolean ทำให้มันสื่อความหมายโดยใส่คำนำหน้าว่า Is, Has, Can อะไรงี้ เช่น `IsAlive`, `_hasArmor`, `CanUseSkill()`
@@ -21,8 +21,9 @@ namespace Company.GameName.Gameplay
         private static int _allCharacterDeadCount = 0;
         public static int AllCharacterDeadCount => _allCharacterDeadCount;
 
-        public float DamageAbsorbing = 0.5f;
-        public int MaxHp = 100;
+        public float damageAbsorbing = 0.5f;
+        public int maxHp = 100;
+        // พวก Delegate มันไม่ถูก Serialize อยู่แล้วใช้แบบ `PascalCase`
         public HpChangedEventHandler OnHpChanged;
         
         private int _currentHp;
@@ -50,13 +51,13 @@ namespace Company.GameName.Gameplay
         {
             if (IsDead)
                 return;
-            CurrentHp = MaxHp;
+            currentHp = MaxHp;
         }
 
         public void ApplyDamage(float damage)
         {
-            int calculatedDamage = (int)(damage - (damage * DamageAbsorbing));
-            CurrentHp -= calculatedDamage;
+            int calculatedDamage = (int)(damage - (damage * damageAbsorbing));
+            currentHp -= calculatedDamage;
         }
     }
 }
