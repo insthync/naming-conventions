@@ -3,7 +3,8 @@
 ### Coding
 [ตามนี้เลย](https://unity.com/how-to/naming-and-code-style-tips-c-scripting-unity)
 
-- พวกชื่อ Namespace, Class, Struct, Public Field, Property, Function, Enum เป็นแบบ `PascalCase` หมด
+- พวกชื่อ Namespace, Class, Struct, Property, Function, Enum เป็นแบบ `PascalCase` หมด
+- Serialzable Field เป็นแบบ `camelCase` เพราะใน Unity เวลาเราจะทำให้ตัวแปรมัน Serialize ได้ ต้องทำเป็น public field (ไม่ก็ใช้ [SerializeField] attribute) ทำแบบนี้เพื่อให้ชื่อตัวแปรมันไม่ซ้ำกับพวก Property 
 - พวก Local Variable/Parameter เป็นแบบ `camelCase` หมด
 - พวก Private/Protected Field ให้มี Prefix เป็น `_` ตามด้วยชื่อเป็นแบบ `camelCase` เช่น `_currentHp` 
 - พวกชื่อตัวแปร Boolean ทำให้มันสื่อความหมายโดยใส่คำนำหน้าว่า Is, Has, Can อะไรงี้ เช่น `IsAlive`, `_hasArmor`, `CanUseSkill()`
